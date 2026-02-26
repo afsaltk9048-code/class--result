@@ -1,0 +1,56 @@
+<script>
+  const students = {
+    "101": {
+      name: "Muhammed Hanan K K",
+      quran: 44, hifz: 48, lisan: 42,
+      fiqh: 41, aqeeda: 50, duroos: 47, thareeq: 50
+    },
+    "102": {
+      name: "Hamdan Muhammad Shajir",
+      quran: 45, hifz: 46, lisan: 39,
+      fiqh: 48, aqeeda: 50, duroos: 49, thareeq: 38
+    },
+    "103": {
+      name: "Muhammed Shazin AK Shabeer",
+      quran: 39, hifz: 45, lisan: 46,
+      fiqh: 48, aqeeda: 49, duroos: 44, thareeq: 47
+    },
+    "104": {
+      name: "Shenza Mehrin EM Ashraf",
+      quran: 38, hifz: 49, lisan: 44,
+      fiqh: 50, aqeeda: 50, duroos: 46, thareeq: 43
+    }
+  };
+
+  function showResult() {
+    const id = document.getElementById("roll").value;
+    const s = students[id];
+
+    if (!s) {
+      document.getElementById("result").innerHTML =
+        "<b>Result not found</b>";
+      return;
+    }
+
+    const total = s.quran + s.hifz + s.lisan + s.fiqh +
+                  s.aqeeda + s.duroos + s.thareeq;
+
+    const status = total >= 245 ? "PASS" : "FAIL";
+    const color = status === "PASS" ? "green" : "red";
+
+    document.getElementById("result").innerHTML = `
+      <h3>${s.name}</h3>
+      Qur'an: ${s.quran}<br>
+      Hifz: ${s.hifz}<br>
+      Lisan: ${s.lisan}<br>
+      Fiqh: ${s.fiqh}<br>
+      Aqeedah: ${s.aqeeda}<br>
+      Duroos: ${s.duroos}<br>
+      Thareeq: ${s.thareeq}<br><br>
+      <b>Total: ${total}</b><br>
+      <b style="color:${color}; font-size:20px;">
+        Result: ${status}
+      </b>
+    `;
+  }
+</script>
